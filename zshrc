@@ -49,7 +49,7 @@ ZSH_THEME="geometry"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew git thefuck)
+plugins=(git hub)
 
 # oh-my-zsh plugin settings
 
@@ -57,7 +57,7 @@ plugins=(brew git thefuck)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/Library/TeX/texbin/"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -90,10 +90,12 @@ export LC_ALL=en_US.UTF-8
 eval "$(thefuck --alias)"
 
 # git lg
-# git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%    C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+ git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%    C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
-# export PYENV_ROOT=/usr/local/var/pyenv
-# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+ export PYENV_ROOT=/usr/local/var/pyenv
+ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-# fpath=(/usr/local/share/zsh-completions $fpath)
+ fpath=(/usr/local/share/zsh-completions $fpath)
 
+ # Zsh Highlighting
+ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

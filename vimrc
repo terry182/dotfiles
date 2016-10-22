@@ -1,30 +1,35 @@
 " This vimrc is written by @daydreamer referencing amix/vimrc and also spf13/spf13-vim
-" Last updated: 2015-11-26
+" Last updated: 2016-10-22
 
 
 " Plugin {
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+" Switching to vim-plug
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'powerline/fonts'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'trusktr/seti.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'lervag/vimtex'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'VundleVim/Vundle.vim'
+Plug 'bling/vim-airline'
+Plug 'powerline/fonts'
+Plug 'jiangmiao/auto-pairs'
+Plug 'brendonrapp/smyck-vim'
+Plug 'trusktr/seti.vim'
+Plug 'scrooloose/syntastic'
+Plug 'Shougo/neocomplete.vim'
+Plug 'lervag/vimtex'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 " }
 
 " Airline settings
@@ -157,11 +162,11 @@ set backspace=2
     set background=dark     " Always a dark background isnt it
     " Colorscheme
     set t_Co=256
-    colo smyck256
+    colo smyck
     
 	set showmatch  					" Show bracket matching
  	set foldenable 					" Auto fold code
-	set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
 	set incsearch                   " Find as you type search
     set hlsearch                    " Highlight search terms
@@ -188,6 +193,7 @@ set backspace=2
 
 " Keyboard mappings {
     let mapleader = ','
+    let maplocalleader = ','
     " Wrapped line moving 
     noremap j gj
     noremap k gk
