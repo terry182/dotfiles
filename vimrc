@@ -1,5 +1,5 @@
 " This vimrc is written by @daydreamer referencing amix/vimrc and also spf13/spf13-vim
-" Last updated: 2016-10-22
+" Last updated: 2019-03-27
 
 
 " Plugin {
@@ -26,6 +26,8 @@ Plug 'lervag/vimtex'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/seoul256.vim'
+Plug 'heavenshell/vim-pydocstring'
+Plug 'sirver/ultisnips',  { 'for': 'tex' }
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -123,6 +125,20 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 		" For perlomni.vim setting.
 		" https://github.com/c9s/perlomni.vim
 		let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+        " Latex settings
+        let g:tex_flavor='latex'        
+"        let g:vimtex_view_general_viewer='zathura'
+        let g:vimtex_view_method='zathura'
+        let g:vimtex_quick_mode=0
+        set conceallevel=1
+        let g:tex_conceal='abdmg'
+
+        "Snippnet
+         set rtp+=~/.vim/ 
+         let g:UltiSnipsExpandTrigger = '<tab>'
+         let g:UltiSnipsJumpForwardTrigger = '<tab>'
+         let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 "}
 
 filetype plugin indent on
@@ -161,6 +177,7 @@ set backspace=2
 
 " UI Settings {
 
+    set encoding=utf8
     set background=dark     " Always a dark background isnt it
     " Colorscheme
     set t_Co=256
@@ -170,6 +187,7 @@ set backspace=2
 	set showmatch  					" Show bracket matching
  	set foldenable 					" Auto fold code
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+
 
 	set incsearch                   " Find as you type search
     set hlsearch                    " Highlight search terms
