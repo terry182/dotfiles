@@ -1,0 +1,20 @@
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+
+lua <<EOF
+require('formatter').setup({
+  filetype = {
+    javascript = {
+      -- prettier
+      function()
+        return {
+          exe = "yarn prettier",
+          args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), '--single-quote'},
+          stdin = true
+        }
+      end
+    }
+  },
+})
+EOF
